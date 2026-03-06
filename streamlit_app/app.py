@@ -441,23 +441,10 @@ skills_data = [
 
 for col, data in zip(skill_cols, skills_data):
     with col:
-        skills_html = ""
+        st.markdown(f"**{data['category']}**")
         for name, pct in data["skills"]:
-            skills_html += f"""
-            <div style="margin-bottom: 1rem;">
-                <span class="skill-name">{name}</span>
-                <div class="skill-bar-bg">
-                    <div class="skill-bar-fill" style="width: {pct}%"></div>
-                </div>
-            </div>
-            """
-        st.markdown(f"""
-        <div class="card">
-            <h3>{data["category"]}</h3>
-            <br>
-            {skills_html}
-        </div>
-        """, unsafe_allow_html=True)
+            st.caption(name)
+            st.progress(pct / 100)
 
 
 # ===== CONTACTO =====
